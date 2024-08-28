@@ -19,17 +19,12 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
-vim.keymap.set('n', '<leader>pv', vim.cmd.Vex, { desc = 'Netrw in Vertical split' })
-vim.keymap.set('n', '<leader>ps', vim.cmd.Sex, { desc = 'Netrw in Horizontal split' })
-
 -- Move between splits easier
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
--- Shows clipboard which on enter pastes selected entry
-vim.keymap.set('n', '<leader>Y', '<cmd>YankBank<CR>', { noremap = true })
 -- Copies to system clipboard
 vim.keymap.set({ 'n', 'v' }, '<leader>y', [["+y]], { desc = 'Copy to system clipboard' })
 -- Moves selected line up or down in visual mode
@@ -37,9 +32,13 @@ vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv")
 --Replace current word in whole focused buffer
 vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
--- In visual non-select mode it pastes text replacing selected char and pasted text is not overwritten in register by deleted char
+-- In visual non-select mode it pastes text replacing selected char and pasted text goes to blackhole register
 vim.keymap.set('x', '<leader>p', [["_dP]])
 vim.keymap.set({ 'n', 'v' }, '<leader>d', [["_d]])
+
+-- Running oil.nvim
+
+vim.keymap.set('n', '<leader>pv', '<CMD>Oil<CR>', { desc = 'Open oil file explorer' })
 
 -- autocmd that highlights copied text
 vim.api.nvim_create_autocmd('TextYankPost', {
