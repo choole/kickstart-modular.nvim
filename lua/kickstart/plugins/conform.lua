@@ -23,6 +23,7 @@ return {
         -- is found.
         javascript = { { 'prettierd', 'prettier' } },
         php = { 'pretty-php' },
+        dart = { 'dcm' },
       },
     },
   },
